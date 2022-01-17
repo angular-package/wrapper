@@ -45,7 +45,7 @@ export class Wrapper<
   }
 
   /**
-   * The method checks if the value of any type is an instance of the `Wrapper` of any, or given opening and closing chars.
+   * The method checks if the value of any type is an instance of the `Wrapper` of any, or the given opening, closing chars, and text.
    * @param value The value of any type to test against the `Wrapper` instance.
    * @param opening Optional opening chars of generic type variable `Opening` to check if the given `value` contains.
    * @param closing Optional closing chars of generic type variable `Closing` to check if the given `value` contains.
@@ -70,10 +70,10 @@ export class Wrapper<
   }
 
   /**
-   * Replaces the closing chars in a given text with a given replacement value at the end of the text.
+   * Replaces the closing chars in a given `text` with a given replacement value at the end of the text.
    * @param text The text of `string` type in which given `closing` characters are replaced by a given replacement value.
    * @param closing The closing chars of the `string` to replace by a given replacement value at the end of the given `text`.
-   * @param replaceValue Replacement value for the given closing characters in the given text.
+   * @param replaceValue Replacement value for the given `closing` characters in the given `text`.
    * @returns The return value is the text of `string` type with a replaced closing chars by a given replacement value.
    * @angularpackage
    */
@@ -88,10 +88,10 @@ export class Wrapper<
   }
 
   /**
-   * Replaces the opening chars in a given text with a given replacement value at the end of the text.
+   * Replaces the opening chars in a given `text` with a given replacement value at the end of the text.
    * @param text The text of `string` type in which the given `opening` chars are replaced by a given replacement value.
    * @param opening The opening chars of the `string` to replace by a given replacement value at the beginning of the given `text`.
-   * @param replaceValue Replacement value for the opening characters in the given text.
+   * @param replaceValue Replacement value for the `opening` characters in the given `text`.
    * @returns The return value is the text of `string` type with a replaced opening chars by a given replacement value.
    * @angularpackage
    */
@@ -110,7 +110,7 @@ export class Wrapper<
    * @param text The text of the `string` from which given opening and closing chars are removed.
    * @param opening The opening chars of the `string` to be removed in the given `text`.
    * @param closing The closing chars of the `string` to be removed in the given `text`.
-   * @returns The return value is the text without the given opening and closing chars.
+   * @returns The return value is the text of string type without the given opening and closing chars.
    * @angularpackage
    */
   public static unwrap(text: string, opening = '', closing = ''): string {
@@ -138,8 +138,8 @@ export class Wrapper<
 
   //#region instance public methods.
   /**
-   * Determines whether the provided `text` has the closing chars of the specified `Wrapper` object.
-   * @param text The text of `string` to test for the existence of the closing chars at the end in it.
+   * Determines whether the provided `text` has the closing chars of the specified `Wrapper` object at the end.
+   * @param text The text of `string` to test for the existence of the closing chars at the end of it.
    * @returns The return value is a `boolean` indicating whether the given `text` has the closing of the wrap.
    * @angularpackage
    */
@@ -148,7 +148,7 @@ export class Wrapper<
   }
 
   /**
-   * Checks if the provided `text` has the opening of a specified `Wrapper` object at the beginning of the text.
+   * Checks whether the provided `text` has the opening of a specified `Wrapper` object at the beginning.
    * @param text The text of `string` to test for the existence of the opening chars at the beginning of it.
    * @returns The return value is a `boolean` indicating whether the given `text` has the opening of the wrap.
    * @angularpackage
