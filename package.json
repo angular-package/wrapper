@@ -1,0 +1,35 @@
+{
+  "name": "@angular-package/wrapper",
+  "version": "0.0.1",
+  "description": "Wrap the text with the opening and closing chars.",
+  "author": "Angular Package <contact@angular-package.dev> (https://angular-package.dev)",
+  "homepage": "https://github.com/angular-package/wrapper#readme",
+  "peerDependencies": {
+    "@angular-package/type": "^5.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular-package/testing": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "Opening characters",
+    "Closing characters",
+    "Text",
+    "Wrap",
+    "Wrapper"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular-package/wrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angular-package/wrapper/issues"
+  },
+  "license": "MIT"
+}
