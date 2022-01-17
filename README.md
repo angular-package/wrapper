@@ -26,7 +26,7 @@ The angular-package supports the development process of [angular][angulario]-bas
 | [storage][storage-github-readme]             | The storage of data under allowed names.                          | [![npm version][storage-npm-badge-png]][storage-npm-badge] |
 | [tag][tag-github-readme]                     | Any tag with optional attributes.                                 | [![npm version][tag-npm-badge-png]][tag-npm-badge] |
 | [testing][testing-github-readme]             | Support for testing other packages.                               | [![npm version][testing-npm-badge-png]][testing-npm-badge] |
-| [text][text-github-readme]                   | **Text on the template with replaceable tags.**                   | [![npm version][text-npm-badge-png]][text-npm-badge] |
+| [text][text-github-readme]                   | Text on the template with replaceable tags.                       | [![npm version][text-npm-badge-png]][text-npm-badge] |
 | [type][type-github-readme]                   | Common types, type guards, and type checkers.                     | [![npm version][type-npm-badge-png]][type-npm-badge] |
 | [ui][ui-github-readme]                       | User interface.                                                   | *In Progress* |
 | **[wrapper][wrapper-github-readme]**         | **Wrap the text with the opening and closing chars.**             | [![npm version][wrapper-npm-badge-png]][wrapper-npm-badge] |
