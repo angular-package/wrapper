@@ -1,12 +1,10 @@
-// @angular-package/type.
-import { isInstance } from '@angular-package/type';
 // Class.
 import { Wrap } from './wrap.class';
 // Type.
 import { Wrapped } from '../type/wrapped.type';
 /**
  * The `Wrapper` is an extension of the `Wrap` object, which means it represents the immutable wrap of the opening and closing with the
- * additional ability to use it to wrap.
+ * additional ability to use it to wrap strings.
  */
 export class Wrapper<
   Opening extends string = string,
@@ -65,7 +63,9 @@ export class Wrapper<
     text?: Text
   ): value is Wrapper<Opening, Text, Closing> {
     return (
-      isInstance(value, this) && super.isWrap(value, opening, closing, text)
+      typeof value === 'object' &&
+      value instanceof this &&
+      super.isWrap(value, opening, closing, text)
     );
   }
 
@@ -88,7 +88,7 @@ export class Wrapper<
   }
 
   /**
-   * Replaces the opening chars in a given `text` with a given replacement value at the end of the text.
+   * Replaces the opening chars in a given `text` with a given replacement value at the beginning of the text.
    * @param text The text of `string` type in which the given `opening` chars are replaced by a given replacement value.
    * @param opening The opening chars of the `string` to replace by a given replacement value at the beginning of the given `text`.
    * @param replaceValue Replacement value for the `opening` characters in the given `text`.
@@ -106,7 +106,7 @@ export class Wrapper<
   }
 
   /**
-   * The method returns the text without the given opening and closing chars.
+   * The method returns the text without the given `opening` and `closing` chars.
    * @param text The text of the `string` from which given opening and closing chars are removed.
    * @param opening The opening chars of the `string` to be removed in the given `text`.
    * @param closing The closing chars of the `string` to be removed in the given `text`.
