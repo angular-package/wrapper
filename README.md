@@ -58,6 +58,7 @@ Wrap the text with the opening and closing chars.
 
 ## Documentation
 
+For the detailed documentation go to [**https://wrapper.angular-package.dev/**](https://wrapper.angular-package.dev/)
 
 <br>
 
@@ -157,7 +158,7 @@ How do I know when to release 1.0.0?
 
 ## License
 
-MIT © angular-package ([license][text-license])
+MIT © angular-package ([license][wrapper-license])
 
 <!-- Funding -->
 [github-badge-sponsor]: https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&link=https://github.com/sponsors/angular-package
