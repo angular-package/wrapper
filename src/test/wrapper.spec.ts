@@ -7,33 +7,6 @@ import { Wrapper } from '../lib/wrapper.class';
 const testing = new Testing(true, true);
 const toBe = new TestingToBeMatchers();
 
-const w = new Wrapper('[', ']', '{my text}');
-
-console.log(`---`);
-
-console.log(w.wrap('<', '>'));
-console.log(w.wrapOn('my new text'));
-
-console.log(w.wrapText('<', '>'));
-
-console.log(w.isWrapped());
-console.log(w.isWrapped('['));
-console.log(w.isWrapped(undefined, ']'));
-console.log(w.isWrapped('[', ']'));
-
-console.log(w.toWrap());
-console.log(w.removeWrapIn(w.valueOf()));
-console.log(w.unwrap());
-console.log(w.unwrapText());
-console.log(w.unwrapText('{', '}'));
-
-console.log(`---`);
-
-console.log(w.textReplaceClosing('<'));
-console.log(w.textReplaceOpening('>'));
-console.log(w.textUnwrap());
-console.log(w.textWrap('<', '>'));
-
 testing.describe(`Wrapper`, () => {
   const opening = `<`;
   const replaceOpening = '{{';
