@@ -43,7 +43,7 @@ export class Wrap<
    * @angularpackage
    */
   public get [Symbol.toStringTag](): string {
-    return 'wrap';
+    return 'Wrap';
   }
   //#endregion instance public accessors.
 
@@ -174,8 +174,8 @@ export class Wrap<
   }
 
   /**
-   * Checks whether the primitive value of a specified object has the closing chars or given closing chars. If given closing chars in the
-   * constructor are the empty `string`, the method returns `false`.
+   * Checks whether the primitive value of a specified object has the closing chars or given `closing` chars. If given `closing` chars in
+   * the constructor are the empty `string`, the method returns `false`.
    * @param closing Optional closing chars of a `string` type to check whether the primitive value contains them at the **end**.
    * @returns The return value is a `boolean` indicating whether the primitive value has the closing chars or given closing chars.
    * @angularpackage
@@ -188,8 +188,8 @@ export class Wrap<
   }
 
   /**
-   * Checks whether the primitive value of a specified object has the opening chars or given opening chars. If given opening chars in the
-   * constructor are the empty `string`, the method returns `false`.
+   * Checks whether the primitive value of a specified object has the opening chars or given `opening` chars. If given `opening` chars in
+   * the constructor are the empty `string`, the method returns `false`.
    * @param opening Optional opening chars of a `string` type to check if the primitive value contains them at the **beginning**.
    * @returns The return value is a `boolean` indicating whether the primitive value has the opening chars or given `opening` chars.
    * @angularpackage
@@ -217,8 +217,8 @@ export class Wrap<
 
   /**
    * The method checks whether the primitive value of the specified `object` is wrapped by the opening and closing chars of an instance or
-   * given `opening` and `closing` chars. If given opening or closing chars in the constructor are the empty `string`, the method returns
-   * `false`.
+   * given `opening` and `closing` chars. If given `opening` or `closing` chars in the constructor are the empty `string`, the method
+   * returns `false`.
    * @param opening Optional opening chars of a `string` type to check if the primitive value contains them at the beginning. The default
    * value is picked from the private `#opening` property of an instance.
    * @param closing Optional closing chars of a `string` type to check if the primitive value contains them at the end. The default value is
