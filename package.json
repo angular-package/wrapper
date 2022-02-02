@@ -1,9 +1,9 @@
 {
   "name": "@angular-package/wrapper",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Wrap the text with the opening and closing chars.",
   "author": "Angular Package <contact@angular-package.dev> (https://angular-package.dev)",
-  "homepage": "https://github.com/angular-package/wrapper#readme",
+  "homepage": "https://wrapper.angular-package.dev/",
   "dependencies": {
     "tslib": "^2.3.0"
   },

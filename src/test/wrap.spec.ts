@@ -1,5 +1,5 @@
 import { typeOf } from '@angular-package/type';
-import { Testing, TestingToBeMatchers } from '@angular-package/testing';
+import { Testing, TestingToBeMatchers, TESTING_ARRAY_BIGINT } from '@angular-package/testing';
 import { Wrap } from '../lib/wrap.class';
 
 const testing = new Testing(true, true);
@@ -14,6 +14,9 @@ testing.describe(`Wrap`, () => {
   const replaceText = 'span';
   const text = `quote`;
   const wrap = new Wrap(opening, closing, text);
+  const wrapNull = new Wrap(null as any, null as any);
+  const wrapUndefined = new Wrap(undefined as any, undefined as any, undefined as any);
+  const wrapArrayBigInt = new Wrap(TESTING_ARRAY_BIGINT as any, TESTING_ARRAY_BIGINT as any);
 
   testing
 
@@ -22,26 +25,37 @@ testing.describe(`Wrap`, () => {
 
         .it(`Wrap.prototype.closing`, () => {
           expect(wrap.closing).toEqual(closing);
+          expect(wrapNull.closing).toEqual('null');
+          expect(wrapUndefined.closing).toEqual('undefined');
           toBe.stringIncludes(wrap.closing, [closing]);
+          expect(wrapArrayBigInt.closing).toEqual('9007199254740991,9007199254740991');
         })
 
         .it(`Wrap.prototype.opening`, () => {
           expect(wrap.opening).toEqual(opening);
+          expect(wrapNull.opening).toEqual('null');
+          expect(wrapUndefined.opening).toEqual('undefined');
           toBe.stringIncludes(wrap.valueOf(), [opening]);
+          expect(wrapArrayBigInt.opening).toEqual('9007199254740991,9007199254740991');
         })
 
         .it(`Wrap.prototype.text`, () => {
           expect(wrap.text).toEqual(text);
+          expect(wrapNull.text).toEqual('');
+          expect(wrapUndefined.text).toEqual('');
           toBe.stringIncludes(wrap.valueOf(), [text]);
         })
 
-        .it(`Wrap.prototype.value`, () => {
+        .it(`Wrap.prototype.valueOf()`, () => {
           expect(wrap.valueOf()).toEqual(`${opening}${text}${closing}`);
+          expect(wrapNull.valueOf()).toEqual('nullnull');
+          expect(wrapUndefined.valueOf()).toEqual('undefinedundefined');
           toBe.stringIncludes(wrap.valueOf(), [opening, text, closing]);
         })
 
         .it(`[Symbol.toStringTag]`, () => {
           expect(typeOf(wrap)).toEqual('wrap');
+          expect(Object.prototype.toString.call(wrap)).toEqual('[object Wrap]');
         });
     })
 
@@ -56,6 +70,21 @@ testing.describe(`Wrap`, () => {
           expect(Wrap.isWrap(wrap, opening, undefined, undefined)).toEqual(true);
           expect(Wrap.isWrap(wrap, opening, closing, undefined)).toEqual(true);
         })
+
+        .it(`Wrap.hasClosing()`, () => {
+          expect(Wrap.hasClosing(`${opening}${text}${closing}`, closing)).toBeTrue();
+          expect(Wrap.hasClosing(`${opening}${text}${closing}`, opening)).toBeFalse();
+        })
+
+        .it(`Wrap.hasOpening()`, () => {
+          expect(Wrap.hasOpening(`${opening}${text}${closing}`, opening)).toBeTrue();
+          expect(Wrap.hasOpening(`${opening}${text}${closing}`, closing)).toBeFalse();
+        });
+
+    })
+
+    .describe(`methods`, () => {
+      testing
 
         .it(`Wrap.prototype.getClosing()`, () => {
           expect(wrap.getClosing()).toEqual(closing);
@@ -139,6 +168,8 @@ testing.describe(`Wrap`, () => {
           expect(new Wrap('<', '>').isWrapped()).toBeTrue();
           expect(new Wrap('<', '>').isWrapped('<')).toBeTrue();
           expect(new Wrap('<', '>').isWrapped(undefined, '>')).toBeTrue();
+          expect(new Wrap('<', '>').isWrapped('', '>')).toBeFalse();
+          expect(new Wrap('<', '>').isWrapped('<', '')).toBeFalse();
         })
 
         .it(`Wrap.prototype.replaceClosing()`, () => {

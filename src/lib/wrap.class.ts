@@ -1,6 +1,7 @@
 /**
- * The `Wrap` object represents the immutable text wrapped by the opening and closing chars. It is designed to preserve the names of the
- * opening, text and closing.
+ * The `Wrap` object is based on the `String` object and represents the immutable primitive value of the text wrapped by the opening and
+ * closing chars. It is designed to preserve the type names of the supplied opening, text, and closing chars by using the generic type
+ * variables.
  */
 export class Wrap<
   Opening extends string = string,
@@ -42,7 +43,7 @@ export class Wrap<
    * @angularpackage
    */
   public get [Symbol.toStringTag](): string {
-    return 'wrap';
+    return 'Wrap';
   }
   //#endregion instance public accessors.
 
@@ -53,15 +54,15 @@ export class Wrap<
   #closing: Closing;
 
   /**
-   * Private property of text of a generic type variable `Text`.
-   */
-  #text: Text;
-
-  /**
    * Private property of the opening chars of a generic type variable `Opening`.
    */
   #opening: Opening;
-  //#endregion instance private properties.
+
+  /**
+   * Private property of text of a generic type variable `Text`.
+   */
+   #text: Text;
+   //#endregion instance private properties.
 
   //#region static public methods.
   /**
@@ -129,8 +130,10 @@ export class Wrap<
   //#region constructor.
   /**
    * Creates a new `Wrap` instance of the opening and closing chars and optional text to wrap.
-   * @param opening Opening characters of the generic type variable `Opening` placed before the given `text`.
-   * @param closing Closing characters of the generic type variable `Closing` placed after the given `text`.
+   * @param opening Opening characters of the generic type variable `Opening` placed before the given `text`. An empty `string` indicates
+   * that for the `hasOpening()` and `isWrapped()` methods, the opening chars are `undefined`, returning `false`.
+   * @param closing Closing characters of the generic type variable `Closing` placed after the given `text`. An empty `string` indicates
+   * that for the `hasClosing()` and `isWrapped()` methods, the closing chars are `undefined`, returning `false`.
    * @param text An optional text placed between the given `opening` and `closing` chars on the template `${Opening}${Text}${Closing}`.
    * @angularpackage
    */
@@ -171,10 +174,10 @@ export class Wrap<
   }
 
   /**
-   * Checks whether the primitive value of a specified object has the closing chars or given closing chars. An empty `string` indicates
-   * `undefined`.
-   * @param closing Optional closing chars of a `string` type to check whether the primitive value contains them at the end.
-   * @returns The return value is a `boolean` indicating whether the primitive value has the closing chars.
+   * Checks whether the primitive value of a specified object has the closing chars or given `closing` chars. If given `closing` chars in
+   * the constructor are the empty `string`, the method returns `false`.
+   * @param closing Optional closing chars of a `string` type to check whether the primitive value contains them at the **end**.
+   * @returns The return value is a `boolean` indicating whether the primitive value has the closing chars or given closing chars.
    * @angularpackage
    */
   public hasClosing(closing?: string): boolean {
@@ -185,10 +188,10 @@ export class Wrap<
   }
 
   /**
-   * Checks whether the primitive value of a specified object has the opening chars or given opening chars. An empty `string` indicates
-   * `undefined`.
-   * @param opening Optional opening chars of a `string` type to check if the primitive value contains them at the beginning.
-   * @returns The return value is a `boolean` indicating whether the primitive value has the opening chars.
+   * Checks whether the primitive value of a specified object has the opening chars or given `opening` chars. If given `opening` chars in
+   * the constructor are the empty `string`, the method returns `false`.
+   * @param opening Optional opening chars of a `string` type to check if the primitive value contains them at the **beginning**.
+   * @returns The return value is a `boolean` indicating whether the primitive value has the opening chars or given `opening` chars.
    * @angularpackage
    */
   public hasOpening(opening?: string): boolean {
@@ -202,7 +205,7 @@ export class Wrap<
    * The method checks whether the text of a specified `Wrap` object is defined, which means it's a `string` of at least one char and
    * optionally equal to the given `text`.
    * @param text Optional text of `string` type to check whether it's equal to the text of the `Wrap` object.
-   * @returns The return value is a `boolean` indicating whether the text is defined and equal to the optionally given text.
+   * @returns The return value is a `boolean` indicating whether the text is defined and optionally equal to the given text.
    * @angularpackage
    */
   public hasText(text?: string): boolean {
@@ -213,16 +216,20 @@ export class Wrap<
   }
 
   /**
-   * The method checks whether the primitive value of the specified object is wrapped by the opening and closing chars of an instance or
-   * given opening and closing chars.
-   * @param opening Optional opening chars of a `string` type to check if the text contains them at the beginning.
-   * @param closing Optional closing chars of a `string` type to check if the text contains them at the end.
-   * @returns The return value is a `boolean` indicating whether the object has both opening and closing chars.
+   * The method checks whether the primitive value of the specified `object` is wrapped by the opening and closing chars of an instance or
+   * given `opening` and `closing` chars. If given `opening` or `closing` chars in the constructor are the empty `string`, the method
+   * returns `false`.
+   * @param opening Optional opening chars of a `string` type to check if the primitive value contains them at the beginning. The default
+   * value is picked from the private `#opening` property of an instance.
+   * @param closing Optional closing chars of a `string` type to check if the primitive value contains them at the end. The default value is
+   * picked from the private `#closing` property of an instance.
+   * @returns The return value is a `boolean` indicating whether the object has both opening and closing chars or given `opening` and
+   * `closing` chars.
    * @angularpackage
    */
   public isWrapped(
-    opening: string = this.opening,
-    closing: string = this.closing
+    opening: string = this.#opening,
+    closing: string = this.#closing
   ): boolean {
     return this.hasOpening(opening) && this.hasClosing(closing);
   }

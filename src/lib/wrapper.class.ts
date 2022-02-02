@@ -17,7 +17,7 @@ export class Wrapper<
    * `typeOf()` function of `@angular-package/type`.
    */
   public get [Symbol.toStringTag](): string {
-    return 'wrapper';
+    return 'Wrapper';
   }
   //#endregion instance accessors.
 
@@ -43,7 +43,7 @@ export class Wrapper<
   }
 
   /**
-   * The method checks if the value of any type is an instance of the `Wrapper` of any, or the given opening, closing chars, and text.
+   * The method checks if the value of any type is an instance of the `Wrapper` of any, or the given `opening`, `closing` chars, and `text`.
    * @param value The value of any type to test against the `Wrapper` instance.
    * @param opening Optional opening chars of generic type variable `Opening` to check if the given `value` contains.
    * @param closing Optional closing chars of generic type variable `Closing` to check if the given `value` contains.
@@ -55,7 +55,7 @@ export class Wrapper<
   public static isWrapper<
     Opening extends string,
     Closing extends string,
-    Text extends string = ''
+    Text extends string = string
   >(
     value: any,
     opening?: Opening,
@@ -70,11 +70,12 @@ export class Wrapper<
   }
 
   /**
-   * Replaces the closing chars in a given `text` with a given replacement value at the end of the text.
+   * Replaces given `closing` chars with a given replacement value at the end of the given `text`.
    * @param text The text of `string` type in which given `closing` characters are replaced by a given replacement value.
    * @param closing The closing chars of the `string` to replace by a given replacement value at the end of the given `text`.
-   * @param replaceValue Replacement value for the given `closing` characters in the given `text`.
-   * @returns The return value is the text of `string` type with a replaced closing chars by a given replacement value.
+   * @param replaceValue The replacement value of a string type for the given `closing` characters in the given `text`.
+   * @returns The return value is the given `text` of `string` type with a replaced `closing` chars by a given replacement value or the
+   * specified `text` unchanged if it does not contain the given `closing` chars.
    * @angularpackage
    */
   public static replaceClosing(
@@ -88,11 +89,12 @@ export class Wrapper<
   }
 
   /**
-   * Replaces the opening chars in a given `text` with a given replacement value at the beginning of the text.
+   * Replaces given `opening` chars with a given replacement value at the beginning of the given `text`.
    * @param text The text of `string` type in which the given `opening` chars are replaced by a given replacement value.
    * @param opening The opening chars of the `string` to replace by a given replacement value at the beginning of the given `text`.
-   * @param replaceValue Replacement value for the `opening` characters in the given `text`.
-   * @returns The return value is the text of `string` type with a replaced opening chars by a given replacement value.
+   * @param replaceValue The replacement value of a string type for the given `opening` characters in the given `text`.
+   * @returns The return value is the given `text` of `string` type with a replaced `opening` chars by a given replacement value or the
+   * specified `text` unchanged if it does not contain the given `opening` chars.
    * @angularpackage
    */
   public static replaceOpening(
@@ -106,14 +108,15 @@ export class Wrapper<
   }
 
   /**
-   * The method returns the text without the given `opening` and `closing` chars.
+   * The method returns the given `text` without the given `opening` and `closing` chars.
    * @param text The text of the `string` from which given opening and closing chars are removed.
    * @param opening The opening chars of the `string` to be removed in the given `text`.
    * @param closing The closing chars of the `string` to be removed in the given `text`.
-   * @returns The return value is the text of string type without the given opening and closing chars.
+   * @returns The return value is the given `text` of `string` type without the given `opening` and `closing` chars or unchanged `text` if
+   * it does not contain the given `opening` and `closing` chars.
    * @angularpackage
    */
-  public static unwrap(text: string, opening = '', closing = ''): string {
+  public static unwrap(text: string, opening: string, closing: string): string {
     return (
       (text = this.replaceClosing(text, closing, '')),
       (text = this.replaceOpening(text, opening, '')),
@@ -162,7 +165,7 @@ export class Wrapper<
    * The replacement succeeds if the closing characters exist at the end of the text.
    * @param text The text of `string` type in which the closing chars are replaced by given replacement value.
    * @param replaceValue The value of `string` type as a replacement for the closing chars at the end of the given `text`.
-   * @returns The return value is the text of `string` type with replaced closing chars by given replacement value.
+   * @returns The return value is the given `text` of `string` type with replaced closing chars by given replacement value.
    * @angularpackage
    */
   public replaceClosingIn(text: string, replaceValue: string): string {
@@ -174,7 +177,7 @@ export class Wrapper<
    * The replacement succeeds if the opening characters exist at the beginning of the text.
    * @param text The text of `string` type in which the opening chars are replaced by given replacement value.
    * @param replaceValue The value of `string` type as a replacement for the opening chars at the beginning of the given `text`.
-   * @returns The return value is the text of `string` type with replaced opening chars by given replacement value.
+   * @returns The return value is the given `text` of `string` type with replaced opening chars by given replacement value.
    * @angularpackage
    */
   public replaceOpeningIn(text: string, replaceValue: string): string {
@@ -183,7 +186,7 @@ export class Wrapper<
 
   /**
    * Returns given `text` without the opening and closing chars of the `Wrapper` object.
-   * @param text The text of a `string` type to unwrap with the opening and closing chars of the `Wrapper` object.
+   * @param text The text of a `string` type to unwrap from the opening and closing chars of the `Wrapper` object.
    * @returns The return value is the text of `string` type unwrapped from the opening and closing chars of the `Wrapper` object.
    * @angularpackage
    */
@@ -210,7 +213,7 @@ export class Wrapper<
    * Replaces the opening chars of the `Wrapper` object in the text of the `Wrapper` object with the given `opening` chars. The replacement
    * succeeds if the opening characters exist at the beginning of the text.
    * @param opening The opening chars of `string` to replace in the text(part of the primitive value).
-   * @returns The return value is the text of string type with replaced opening chars.
+   * @returns The return value is the text of `string` type with replaced opening chars.
    * @angularpackage
    */
   public textReplaceOpening(opening: string): string {
@@ -276,8 +279,8 @@ export class Wrapper<
   }
 
   /**
-   * The method returns the primitive value of a specified `Wrapper` object with text unwrapped from its opening and closing chars or given
-   * `opening` and `closing` chars.
+   * The method returns the primitive value of a specified `Wrapper` object with text unwrapped from the opening and closing chars of the
+   * `Wrapper` instance or given `opening` and `closing` chars.
    * @param opening Optional opening chars of `string` type to remove from the beginning of the text of the `Wrapper` instance. By default,
    * its value is equal to the opening chars of the `Wrapper` instance.
    * @param closing Optional closing chars of `string` type to remove from the end of the text of the `Wrapper` instance. By default, its
@@ -299,10 +302,11 @@ export class Wrapper<
    * The method wraps the primitive value of a specified `Wrapper` object by its opening and closing chars or given `opening` and `closing`
    * chars.
    * @param opening Optional opening chars of a generic type variable `CustomOpening` to wrap the primitive value of the `Wrapper` instance.
-   * By default, its value is equal to the closing chars of the `Wrapper` instance.
+   * By default, its value is equal to the opening chars of the `Wrapper` instance.
    * @param closing Optional closing chars of a generic type variable `CustomClosing` to wrap the primitive value of the `Wrapper` instance.
    * By default, its value is equal to the closing chars of the `Wrapper` instance.
-   * @returns The return value is a primitive value wrapped by the given opening and closing chars or from the `Wrapper` instance.
+   * @returns The return value is a primitive value wrapped by the opening and closing chars of the `Wrapper` instance or the given
+   * `opening` and `closing` chars.
    * @angularpackage
    */
   public wrap<
@@ -316,9 +320,10 @@ export class Wrapper<
   }
 
   /**
-   * Wraps given text with the wrap, the opening, and closing chars of the `Wrapper` object.
+   * The method wraps the given `text` with the wrap, the `opening`, and `closing` chars of the `Wrapper` object.
    * @param text The text of generic type variable `CustomText` to wrap by the opening and closing chars of the `Wrapper` instance.
-   * @returns The return value is the text wrapped by the opening and closing chars of the `Wrapper` object of the generic type `Wrapped`.
+   * @returns The return value is the given `text` wrapped by the opening and closing chars of the `Wrapper` object of the generic type
+   * `Wrapped`.
    * @angularpackage
    */
   public wrapOn<CustomText extends string = ''>(
