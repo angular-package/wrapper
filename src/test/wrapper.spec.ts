@@ -55,8 +55,8 @@ testing.describe(`Wrapper`, () => {
         })
         .it(`Wrapper.unwrap()`, () => {
           expect(Wrapper.unwrap(`${opening}${text}${closing}`, opening, closing)).toEqual(text);
-          expect(Wrapper.unwrap(`${opening}${text}${closing}`, undefined, closing)).toEqual(`${opening}${text}${''}`);
-          expect(Wrapper.unwrap(`${opening}${text}${closing}`, opening, undefined)).toEqual(`${''}${text}${closing}`);
+          expect(Wrapper.unwrap(`${opening}${text}${closing}`, undefined as any, closing)).toEqual(`${opening}${text}${''}`);
+          expect(Wrapper.unwrap(`${opening}${text}${closing}`, opening, undefined as any)).toEqual(`${''}${text}${closing}`);
         })
 
         ;
@@ -66,6 +66,7 @@ testing.describe(`Wrapper`, () => {
       testing
       .it(`[Symbol.toStringTag]`, () => {
         expect(typeOf(wrapper)).toEqual('wrapper');
+        expect(Object.prototype.toString.call(wrapper)).toEqual('[object Wrapper]');
       });
     })
 
