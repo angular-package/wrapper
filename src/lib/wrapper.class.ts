@@ -13,7 +13,7 @@ export class Wrapper<
 > extends Wrap<Opening, Text, Closing> {
   //#region instance accessors.
   /**
-   * The property, with the help of `toStringTag`, changes the default tag to `'wrapper'` in the `Wrapper` instance. It can be read by the
+   * The property, with the help of `toStringTag`, changes the default tag to `Wrapper` in the `Wrapper` instance. It can be read by the
    * `typeOf()` function of `@angular-package/type`.
    */
   public get [Symbol.toStringTag](): string {
