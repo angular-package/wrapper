@@ -1,6 +1,8 @@
 
-The package is no longer maintained in favor of [`@typescript-package/wrapper`](https://github.com/typescript-package/wrapper), to move the typescript
+> [!IMPORTANT]  
+> The package is maintained under the [`@typescript-package/wrapper`](https://github.com/typescript-package/wrapper), to move the typescript
 features and use `@angular-package` strictly for the @angular.
+
 
 # angular-package
 
