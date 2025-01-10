@@ -1,3 +1,7 @@
+
+The package is no longer maintained in favor of [`@typescript-package/wrapper`](https://github.com/typescript-package/wrapper), to move the typescript
+features and use `@angular-package` strictly for the @angular.
+
 # angular-package
 
 <img align="left" width="100" height="100" src="https://avatars.githubusercontent.com/u/31412194?s=400&u=c9929aa36826318ccac8f7b84516e1ce3af7e21c&v=4" />
@@ -5,6 +9,7 @@
 The angular-package supports the development process of [angular][angulario]-based applications in varied ways through the thoughtful, reusable, easy-to-use small pieces of code called packages.
 
 [**docs.angular-package.dev**](https://docs.angular-package.dev)
+
 
 <br>
 
@@ -58,7 +63,7 @@ Wrap the text with the opening and closing chars.
 
 ## Documentation
 
-For the detailed documentation go to [**https://wrapper.angular-package.dev/**](https://wrapper.angular-package.dev/)
+For the detailed documentation go to [**https://wrapper.angular-package.dev**](https://wrapper.angular-package.dev)
 
 <br>
 
@@ -87,7 +92,7 @@ Run `ng generate component component-name --project wrapper` to generate a new c
 
 ### Build
 
-Run `ng build wrapper` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build wrapper` to build the project. The build artifacts will be stored in the `dist/wrapper` directory.
 
 ### Publishing
 
@@ -95,7 +100,7 @@ After building your library with `ng build wrapper`, go to the dist folder `cd d
 
 ### Running unit tests
 
-Install `@angular-package/wrapper` with command:
+Install `@angular-package/testing` with command:
 
 ```typescript
 npm i @angular-package/testing --no-save
