@@ -5,10 +5,10 @@
  */
 export class Wrap<
   Opening extends string = string,
-  Text extends string = ``,
+  Text extends string = '',
   Closing extends string = string
 > extends String {
-  //#region instance public accessors.
+  // #region instance public accessors.
   /**
    * The `get` accessor gets the closing of the wrap by returning the `#closing` property of a specified object.
    * @returns The return value is closing of the wrap of a generic type variable `Closing`.
@@ -37,9 +37,9 @@ export class Wrap<
   }
 
   /**
-   * The `get` accessor, with the help of `toStringTag`, changes the default tag to `'wrap'` for an instance of `Wrap`. It can be read by
+   * The `get` accessor, with the help of `toStringTag`, changes the default tag to `Wrap` for an instance of `Wrap`. It can be read by
    * the `typeOf()` function of `@angular-package/type`.
-   * @returns The return value is the word 'wrap` of a `string`.
+   * @returns The return value is the word 'Wrap` of a `string`.
    * @angularpackage
    */
   public get [Symbol.toStringTag](): string {
